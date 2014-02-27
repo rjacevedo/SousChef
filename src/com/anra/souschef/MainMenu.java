@@ -136,10 +136,11 @@ public class MainMenu extends FragmentActivity {
 			
 			View rootView = inflater.inflate(R.layout.fragment_main_menu_dummy,
 					container, false);
-			int page = getArguments().getInt(ARG_SECTION_NUMBER);
-			for (String s : Ingredients.getList(page)){
+			LinearLayout checkBoxContainer = (LinearLayout)rootView.findViewById(R.id.category_panel);
+			int pagenum = getArguments().getInt(ARG_SECTION_NUMBER);
+			for (String s : Ingredients.getList(pagenum)){
 				CheckBox cb = new CheckBox(rootView.getContext());
-				Log.e("Checkbox","Attempting to add checkbox " + s + " Current position :" + page);
+				//Log.e("Checkbox","Attempting to add checkbox " + s + " Current position :" + pagenum);
 				cb.setText(s);
 				cb.setOnCheckedChangeListener(new OnCheckedChangeListener()
 				{
@@ -149,15 +150,17 @@ public class MainMenu extends FragmentActivity {
 						String ingredient = btn.getText().toString();
 						if (b){
 							selectedIngredients.add(ingredient);
+							Log.e("",selectedIngredients.toString());
 						}
 						else{
 							if (!selectedIngredients.remove(ingredient)){
 								Log.e("ingredient list error",ingredient + " not found in list");
 							}
+							Log.e("",selectedIngredients.toString());
 						}
 					}
 				});
-				container.addView(cb,20,20);
+				checkBoxContainer.addView(cb);
 			}
 			return rootView;
 		}
