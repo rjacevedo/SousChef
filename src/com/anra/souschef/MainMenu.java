@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.LayoutParams;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainMenu extends FragmentActivity {
@@ -137,9 +139,8 @@ public class MainMenu extends FragmentActivity {
 			int page = getArguments().getInt(ARG_SECTION_NUMBER);
 			for (String s : Ingredients.getList(page)){
 				CheckBox cb = new CheckBox(rootView.getContext());
+				Log.e("Checkbox","Attempting to add checkbox " + s + " Current position :" + page);
 				cb.setText(s);
-				cb.setChecked(false);
-				cb.setEnabled(true);
 				cb.setOnCheckedChangeListener(new OnCheckedChangeListener()
 				{
 					@Override
@@ -156,6 +157,7 @@ public class MainMenu extends FragmentActivity {
 						}
 					}
 				});
+				container.addView(cb,20,20);
 			}
 			return rootView;
 		}
