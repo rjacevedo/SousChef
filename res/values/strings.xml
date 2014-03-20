@@ -8,4 +8,5 @@
 	<string name="edittext_hint">This is a test!</string>
 	<string name="hello_world">Hello World</string>
 	<string name="searchHint">Search Ingredients</string>
+	<string name="getRecipes">Find Recipes!</string>
 </resources>
