@@ -7,12 +7,13 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="18" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@android:style/Theme.NoTitleBar">
         <activity
             android:name="com.anra.souschef.MainMenu"
             android:label="@string/app_name" >
@@ -21,6 +22,18 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.anra.souschef.SearchActivity"
+            android:label="@string/title_activity_search"
+            android:parentActivityName="com.anra.souschef.MainMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.anra.souschef.MainMenu" />
+        </activity>
+        <activity
+            android:name="com.anra.souschef.DisplayResults"
+            android:label="@string/title_activity_display_results" >
         </activity>
     </application>
 
